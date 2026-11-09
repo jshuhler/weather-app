@@ -1,4 +1,6 @@
 import "./style.css";
-import { getWeatherData } from "./getWeatherData.js";
+import { localWeather, getWeatherData } from "./getWeatherData.js";
+import { displayWeather } from "./displayControl.js";
 
-getWeatherData("Philadelphia,PA")
+getWeatherData("22305")
+displayWeather(localWeather)

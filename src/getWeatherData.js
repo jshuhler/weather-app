@@ -7,10 +7,10 @@ let localWeather = {
         conditions: null,
     },
     week: {
-        temp: null,
+        date: null,
         high: null,
         low: null,
-        
+        conditions: null,
     }
 }
 
@@ -18,21 +18,22 @@ async function getWeatherData(location) {
     console.log(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}`);
     const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}`);
     const returnedWeatherData = await response.json();
-    parseWeatherData(returnedWeatherData)
+    const parsedWeatherData = await parseWeatherData(returnedWeatherData)
     console.log("returnedWeatherData: ",returnedWeatherData)
 };
 
-function parseWeatherData(returnedWeatherData) {
+function parseWeatherData(parsedWeatherData) {
     // CURRENT WEATHER
-    localWeather.current.temp = returnedWeatherData.currentConditions.temp;
-    localWeather.current.location = returnedWeatherData.resolvedAddress;
-    localWeather.current.high = returnedWeatherData.days[0].tempmax;
-    localWeather.current.low = returnedWeatherData.days[0].tempmin;
-    localWeather.current.conditions = returnedWeatherData.currentConditions.conditions;
+    localWeather.current.temp = parsedWeatherData.currentConditions.temp;
+    localWeather.current.high = parsedWeatherData.days[0].tempmax;
+    localWeather.current.low = parsedWeatherData.days[0].tempmin;
+    localWeather.current.location = parsedWeatherData.resolvedAddress;
+    localWeather.current.conditions = parsedWeatherData.currentConditions.conditions;
     // UPCOMING WEEK WEATHER
-    console.log("localWeather: ", localWeather)
+    // localWeather.
 }
 
 export {
+    localWeather,
     getWeatherData,
 };
