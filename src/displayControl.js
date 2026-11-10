@@ -1,8 +1,10 @@
 import { localWeather } from "./getWeatherData.js"
 
-function displayWeather(localWeather) {
+// starting easy, just trying to get things logged in the console. 
+async function displayWeather(localWeather) {
     console.log("localWeather: ", localWeather);
-    console.log(localWeather.current.conditions) // this is returning null, is it running BEFORE the fetch is done?
+    // this returns lots of null values, I think it's running before the actual fetching is done. 
+    console.log(`It's currently ${localWeather.current.temp} and ${localWeather.current.conditions} with an expected high of ${localWeather.current.high} in ${localWeather.current.location}.`);
 }
 
 export { 
