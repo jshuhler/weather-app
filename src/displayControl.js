@@ -1,4 +1,4 @@
-import { localWeather, getWeatherData } from "./getWeatherData.js"
+import { localWeather, getWeatherData } from "./weatherData.js"
 
 // SUBMIT LISTENER
 const searchForm = document.querySelector("form")
