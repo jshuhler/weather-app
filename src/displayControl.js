@@ -1,4 +1,16 @@
-import { localWeather } from "./getWeatherData.js"
+import { localWeather, getWeatherData } from "./getWeatherData.js"
+
+// SUBMIT LISTENER
+const searchForm = document.querySelector("form")
+const searchBar = document.getElementById("location-input");
+
+searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    console.log(searchBar.value);
+    await getWeatherData(searchBar.value);
+    displayWeather(localWeather);
+    searchBar.value = "";
+});
 
 // starting easy, just trying to get things logged in the console. 
 function displayWeather(localWeather) {

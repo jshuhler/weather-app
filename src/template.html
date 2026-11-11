@@ -6,6 +6,21 @@
     <title>Weather!</title>
 </head>
 <body>
-    
+    <div class="wrapper">
+        <form action="" class="input">
+            <label for="location-input">
+                <input type="text" id="location-input" name="location-input" required minlength="3">
+                <span id="location-input-error" class="error" aria-live=""polite"></span>
+            </label>
+            <button class="submit-button">Search</button>
+        </form>
+        <div class="weather-container">
+            <div class="today-weather">
+            </div>
+            <div class="tomorrow-weather">
+        
+            </div>
+        </div>
+    </div>
 </body>
 </html>
