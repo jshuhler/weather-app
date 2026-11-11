@@ -1,13 +1,13 @@
 import { localWeather, getWeatherData } from "./weatherData.js"
 
-// SUBMIT LISTENER
+// SEARCH LISTENER
 const searchForm = document.querySelector("form");
 const searchBar = document.getElementById("location-input");
 
-searchForm.addEventListener('submit', (e) => {
+searchForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     console.log(searchBar.value);
-    getWeatherData(searchBar.value);
+    await getWeatherData(searchBar.value);
     displayWeather(localWeather);
     searchBar.value = "";
 });
