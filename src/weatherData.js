@@ -17,7 +17,7 @@ let localWeather = {
 async function getWeatherData(location) {
     const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}`);
     const returnedWeatherData = await response.json();
-    parseWeatherData(returnedWeatherData)
+    parseWeatherData(returnedWeatherData);
     console.log("returnedWeatherData: ",returnedWeatherData)
 };
 
