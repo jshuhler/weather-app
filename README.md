@@ -11,3 +11,4 @@ My (in progress) solution for the [Weather App](https://www.theodinproject.com/l
 
 ## attributions
 - weather data from [Visual Crossing](https://www.visualcrossing.com/weather-api/)
+- weather icons from [iconixar - Flaticon](https://www.flaticon.com/authors/iconixar)

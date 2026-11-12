@@ -1,6 +1,6 @@
 import { localWeather, getWeatherData } from "./weatherData.js"
 
-// SEARCH LISTENER
+// search bar
 const searchForm = document.querySelector("form");
 const searchBar = document.getElementById("location-input");
 
@@ -11,6 +11,9 @@ searchForm.addEventListener('submit', async (e) => {
     displayWeather(localWeather);
     searchBar.value = "";
 });
+
+// f and c toggle
+
 
 // starting easy, just trying to get things logged in the console. 
 function displayWeather(localWeather) {
