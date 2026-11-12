@@ -33,11 +33,13 @@ function parseWeatherData(returnedWeatherData) {
     localWeather.current.low = returnedWeatherData.days[0].tempmin;
     localWeather.current.location = returnedWeatherData.resolvedAddress;
     localWeather.current.conditions = returnedWeatherData.currentConditions.conditions;
+    localWeather.current.icon = returnedWeatherData.currentConditions.icon;
     // UPCOMING WEEK WEATHER
     localWeather.tomorrow.date = returnedWeatherData.days[1].datetime;
     localWeather.tomorrow.high = returnedWeatherData.days[1].tempmax;
     localWeather.tomorrow.low = returnedWeatherData.days[1].tempmin;
     localWeather.tomorrow.conditions = returnedWeatherData.days[1].conditions;
+    localWeather.tomorrow.icon = returnedWeatherData.days[1].icon;
 }
 
 export {

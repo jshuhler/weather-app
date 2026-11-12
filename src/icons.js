@@ -1,38 +1,40 @@
 const weatherIcons = {
     snow: {
-        name: "snow",
+        icon: "snow",
         path: "./img/weather-icons/snow.png",
     },
     rain: {
-        name: "rain",
-        path: "./img/weather-icons/.png",
+        icon: "rain",
+        path: "./img/weather-icons/rain.png",
     },
     fog: {
-        name: "fog",
+        icon: "fog",
         path: "./img/weather-icons/fog.png",
     },
     wind: {
-        name: "wind",
+        icon: "wind",
         path: "./img/weather-icons/wind.png",
     },
     cloudy: {
-        name: "cloudy",
+        icon: "cloudy",
         path: "./img/weather-icons/cloudy.png",
     },
     partlyCloudyDay: {
-        name: "partly-cloudy-day",
+        icon: "partly-cloudy-day",
         path: "./img/weather-icons/partly-cloudy-day.png",
     },
     partlyCloudyNight: {
-        name: "partly-cloudy-night",
+        icon: "partly-cloudy-night",
         path: "./img/weather-icons/partly-cloudy-night.png",
     },
     clearDay: {
-        name: "clear-day",
+        icon: "clear-day",
         path: "./img/weather-icons/clear-day.png",
     },
     clearNight: {
-        name: "clear-night",
+        icon: "clear-night",
         path: "./img/weather-icons/clear-night.png",
     },
 }
+
+export { weatherIcons }
