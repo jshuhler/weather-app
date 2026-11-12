@@ -1,7 +1,29 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+	font-family: var(--default-font);
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
 }
+
+:root {
+	--default-font: 'JetBrains Mono', monospace;
+}
+
+button {
+	cursor: pointer;
+}
+
+/*  ===================================
+	WRAPPER
+	=================================== */
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+/*  ===================================
+	INPUT
+	=================================== */
