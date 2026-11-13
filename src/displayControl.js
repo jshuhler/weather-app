@@ -12,7 +12,7 @@ searchForm.addEventListener('submit', async (e) => {
     searchBar.value = "";
 });
 
-// f and c toggle - event listener to call a function that's defined in weatherData.js 
+// f & c toggle - event listener to call a function that's defined in weatherData.js 
 
 // update the displayed weather 
 const locationTitle = document.querySelector(".location-title");
@@ -27,24 +27,21 @@ function displayWeather(localWeather) {
     console.log(`Tomorrow, ${localWeather.tomorrow.date}, ${localWeather.current.location} will be ${localWeather.tomorrow.conditions}, with a high of ${localWeather.tomorrow.high} and a low of ${localWeather.tomorrow.low}`)
 }
 
-// update name of city
-
-
-function updateWeatherLocation(localWeather) {
-    locationTitle.textContent = localWeather.current.location;
-}
-
 // update condition icon
 const todayIconContainer = document.getElementById("current-icon");
 
 function updateWeatherIcon(localWeather) {
     const todayWeatherIcon = document.createElement("img");
     let todayIconId = localWeather.current.icon;
-    import('./icons.js')
+    import('./img/weather-icons')
         .then((module) => {
-            console.log(module.weatherIcons.cloudy.path)
-            todayIconId = module.weatherIcons.cloudy.path;
+            console.log(module)
+            console.log(module.weatherIcons.todayIconId.path)
             todayWeatherIcon.src = todayIconId;
+
+            // for (const icon in module) {
+            //     if (localWeather.current.icon === )
+            // }
         })
 
     todayIconContainer.appendChild(todayWeatherIcon)

@@ -1,37 +1,37 @@
 const weatherIcons = {
-    snow: {
+    "snow": {
         icon: "snow",
         path: "./img/weather-icons/snow.png",
     },
-    rain: {
+    "rain": {
         icon: "rain",
         path: "./img/weather-icons/rain.png",
     },
-    fog: {
+    "fog": {
         icon: "fog",
         path: "./img/weather-icons/fog.png",
     },
-    wind: {
+    "wind": {
         icon: "wind",
         path: "./img/weather-icons/wind.png",
     },
-    cloudy: {
+    "cloudy": {
         icon: "cloudy",
         path: "./img/weather-icons/cloudy.png",
     },
-    partlyCloudyDay: {
+    "partly-cloudy-day": {
         icon: "partly-cloudy-day",
         path: "./img/weather-icons/partly-cloudy-day.png",
     },
-    partlyCloudyNight: {
+    "partly-cloudy-night": {
         icon: "partly-cloudy-night",
         path: "./img/weather-icons/partly-cloudy-night.png",
     },
-    clearDay: {
+    "clear-day": {
         icon: "clear-day",
         path: "./img/weather-icons/clear-day.png",
     },
-    clearNight: {
+    "clear-night": {
         icon: "clear-night",
         path: "./img/weather-icons/clear-night.png",
     },
