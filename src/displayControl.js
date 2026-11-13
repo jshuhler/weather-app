@@ -1,4 +1,4 @@
-import { localWeather, getWeatherData } from "./weatherData.js"
+import { localWeather, getWeatherData } from "./weatherData.js";
 
 // search bar
 const searchForm = document.querySelector("form");
@@ -12,29 +12,42 @@ searchForm.addEventListener('submit', async (e) => {
     searchBar.value = "";
 });
 
-// f and c toggle
+// f and c toggle - event listener to call a function that's defined in weatherData.js 
 
-// starting easy, just trying to get things logged in the console. 
+// update the displayed weather 
+const locationTitle = document.querySelector(".location-title");
+const todayCurrentTemp = document.getElementById("current-temp-today");
+
 function displayWeather(localWeather) {
-    updateWeatherLocation(localWeather);
-    // updateWeatherIcon()
+    locationTitle.textContent = localWeather.current.location;
+    todayCurrentTemp.textContent = `${localWeather.current.temp}\u00B0F`;
+    updateWeatherIcon(localWeather)
     console.log("localWeather: ", localWeather);
     console.log(`It's currently ${localWeather.current.temp} and ${localWeather.current.conditions} with an expected high of ${localWeather.current.high} in ${localWeather.current.location}.`);
     console.log(`Tomorrow, ${localWeather.tomorrow.date}, ${localWeather.current.location} will be ${localWeather.tomorrow.conditions}, with a high of ${localWeather.tomorrow.high} and a low of ${localWeather.tomorrow.low}`)
 }
 
 // update name of city
-const locationTitle = document.querySelector(".location-title");
+
 
 function updateWeatherLocation(localWeather) {
     locationTitle.textContent = localWeather.current.location;
 }
 
 // update condition icon
-const conditionIcon = document.querySelector(".condition-icon");
-const todayWeatherCard = document.getElementById("today-weather")
-function updateWeatherIcon(localWeather) {
+const todayIconContainer = document.getElementById("current-icon");
 
+function updateWeatherIcon(localWeather) {
+    const todayWeatherIcon = document.createElement("img");
+    let todayIconId = localWeather.current.icon;
+    import('./icons.js')
+        .then((module) => {
+            console.log(module.weatherIcons.cloudy.path)
+            todayIconId = module.weatherIcons.cloudy.path;
+            todayWeatherIcon.src = todayIconId;
+        })
+
+    todayIconContainer.appendChild(todayWeatherIcon)
 }
 
 export { 
