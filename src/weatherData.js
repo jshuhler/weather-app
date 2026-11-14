@@ -19,11 +19,8 @@ let localWeather = {
 }
 
 // fetching overall weather data from visual crossing
-async function getWeatherData(location) {
-    const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/
-        ${location}?
-        unitGroup=us
-        &iconSet=icons1`);
+async function getWeatherData(location,tempUnit) {
+    const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=${tempUnit}&iconSet=icons1`);
     const returnedWeatherData = await response.json();
     parseWeatherData(returnedWeatherData);
     console.log("returnedWeatherData: ",returnedWeatherData)
@@ -38,7 +35,7 @@ function parseWeatherData(returnedWeatherData) {
 
 
     // CURRENT WEATHER
-    localWeather.current.temp = returnedWeatherData.currentConditions.temp;
+    localWeather.current.temp = returnedWeatherData.days[0].temp;
     localWeather.current.high = returnedWeatherData.days[0].tempmax;
     localWeather.current.low = returnedWeatherData.days[0].tempmin;
     localWeather.current.location = returnedWeatherData.resolvedAddress;

@@ -3,15 +3,19 @@ import { localWeather, getWeatherData } from "./weatherData.js";
 // search bar
 const searchForm = document.querySelector("form");
 const searchBar = document.getElementById("location-input");
+let tempUnit = "us"; // moving this definition around to find the right place for it
 
 searchForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    await getWeatherData(searchBar.value);
+    await getWeatherData(searchBar.value,tempUnit);
     displayWeather(localWeather);
     searchBar.value = "";
 });
 
 // f & c toggle - event listener to call a function that's defined in weatherData.js 
+// add class to span that is active to color differently
+// let tempUnit = "metric"; // set initial value, other value is "metric"
+
 
 // update the displayed weather 
 const locationTitle = document.querySelector(".location-title");
@@ -42,11 +46,11 @@ function displayWeather(localWeather) {
     tomorrowCondition.textContent = localWeather.tomorrow.conditions;
     tomorrowHigh.innerHTML = `<b>High:</b> ${localWeather.tomorrow.high}\u00B0F`;
     tomorrowLow.innerHTML = `<b>Low:</b> ${localWeather.tomorrow.low}\u00B0F`;
-
+    // testing logs - TO REMOVE
     console.log("localWeather: ", localWeather);
     console.log(`It's currently ${localWeather.current.temp} and ${localWeather.current.conditions} with an expected high of ${localWeather.current.high} in ${localWeather.current.location}.`);
     console.log(`Tomorrow, ${localWeather.tomorrow.date}, ${localWeather.current.location} will be ${localWeather.tomorrow.conditions}, with a high of ${localWeather.tomorrow.high} and a low of ${localWeather.tomorrow.low}`)
-}
+};
 
 // update condition icon
 const todayIconContainer = document.getElementById("current-icon-container");
@@ -64,6 +68,6 @@ function updateWeatherIcon(localWeather) {
     });
 };
 
-export { 
+export {
     displayWeather,
 }
