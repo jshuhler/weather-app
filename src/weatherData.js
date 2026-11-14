@@ -5,12 +5,14 @@ let localWeather = {
         low: null,
         location: null,
         conditions: null,
+        date: null,
     },
     tomorrow: {
         date: null,
         high: null,
         low: null,
         conditions: null,
+        date: null,
     }
 }
 
@@ -34,12 +36,14 @@ function parseWeatherData(returnedWeatherData) {
     localWeather.current.location = returnedWeatherData.resolvedAddress;
     localWeather.current.conditions = returnedWeatherData.currentConditions.conditions;
     localWeather.current.icon = returnedWeatherData.currentConditions.icon;
-    // UPCOMING WEEK WEATHER
+    localWeather.current.date = returnedWeatherData.days[0].datetime;
+    // TOMORROW WEATHER
     localWeather.tomorrow.date = returnedWeatherData.days[1].datetime;
     localWeather.tomorrow.high = returnedWeatherData.days[1].tempmax;
     localWeather.tomorrow.low = returnedWeatherData.days[1].tempmin;
     localWeather.tomorrow.conditions = returnedWeatherData.days[1].conditions;
     localWeather.tomorrow.icon = returnedWeatherData.days[1].icon;
+    localWeather.tomorrow.date = returnedWeatherData.days[1].datetime
 }
 
 export {
