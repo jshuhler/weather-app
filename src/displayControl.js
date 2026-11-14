@@ -32,20 +32,14 @@ const todayIconContainer = document.getElementById("current-icon");
 
 function updateWeatherIcon(localWeather) {
     const todayWeatherIcon = document.createElement("img");
+    console.log("RIGHT HERE: ", localWeather.current.icon)
     let todayIconId = localWeather.current.icon;
-    import('./img/weather-icons')
-        .then((module) => {
-            console.log(module)
-            console.log(module.weatherIcons.todayIconId.path)
-            todayWeatherIcon.src = todayIconId;
-
-            // for (const icon in module) {
-            //     if (localWeather.current.icon === )
-            // }
-        })
-
-    todayIconContainer.appendChild(todayWeatherIcon)
-}
+    console.log(todayIconId)
+    import(`./img/weather-icons/${todayIconId}.png`).then((module) => {
+        todayWeatherIcon.src = module.default;
+    });
+    todayIconContainer.appendChild(todayWeatherIcon);
+};
 
 export { 
     displayWeather,
