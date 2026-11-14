@@ -37,15 +37,4 @@ const weatherIcons = {
     },
 }
 
-// const weatherIcons = [
-//     {
-//         icon: "snow",
-//         path: "./img/weather-icons/snow.png",
-//     },
-//     {
-//     icon: "snow",
-//     path: "./img/weather-icons/snow.png",
-//     },
-// ]
-
 export { weatherIcons }
