@@ -1,3 +1,5 @@
+import { format, parseISO } from "date-fns"
+
 let localWeather = {
     current: {
         temp: null,
@@ -29,6 +31,12 @@ async function getWeatherData(location) {
 
 // cleaning up returned weather data and pushing to localWeather object for use
 function parseWeatherData(returnedWeatherData) {
+    // date testing
+    console.log(returnedWeatherData.days[0].datetime)
+    console.log(format(parseISO(returnedWeatherData.days[0].datetime), 'PP'))
+    console.log(format(parseISO(returnedWeatherData.days[1].datetime), 'PP'))
+
+
     // CURRENT WEATHER
     localWeather.current.temp = returnedWeatherData.currentConditions.temp;
     localWeather.current.high = returnedWeatherData.days[0].tempmax;
@@ -36,14 +44,14 @@ function parseWeatherData(returnedWeatherData) {
     localWeather.current.location = returnedWeatherData.resolvedAddress;
     localWeather.current.conditions = returnedWeatherData.currentConditions.conditions;
     localWeather.current.icon = returnedWeatherData.currentConditions.icon;
-    localWeather.current.date = returnedWeatherData.days[0].datetime;
+    localWeather.current.date = format(parseISO(returnedWeatherData.days[0].datetime), 'PPPP');
     // TOMORROW WEATHER
     localWeather.tomorrow.date = returnedWeatherData.days[1].datetime;
     localWeather.tomorrow.high = returnedWeatherData.days[1].tempmax;
     localWeather.tomorrow.low = returnedWeatherData.days[1].tempmin;
     localWeather.tomorrow.conditions = returnedWeatherData.days[1].conditions;
     localWeather.tomorrow.icon = returnedWeatherData.days[1].icon;
-    localWeather.tomorrow.date = returnedWeatherData.days[1].datetime
+    localWeather.tomorrow.date = format(parseISO(returnedWeatherData.days[1].datetime), 'PPPP');
 }
 
 export {
