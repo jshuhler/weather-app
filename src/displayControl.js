@@ -1,14 +1,41 @@
 import { localWeather, getWeatherData } from "./weatherData.js";
 
-// search bar
+// SWITCHING TEMP UNIT
+let tempUnit = "us";
+const unitToggles = document.querySelectorAll(".unit-toggle");
+const fToggle = document.getElementById("f-toggle");
+const cToggle = document.getElementById("c-toggle");
+
+unitToggles.forEach(element => {
+    element.addEventListener('click', (e) => {
+        if (e.target.id === "c-toggle" && tempUnit === "us") {
+            tempUnit = "metric";
+            e.target.classList.add("active-unit");
+            fToggle.classList.remove("active-unit");
+            if (localWeather.current.temp !== null) {
+                displayWeather(localWeather,tempUnit);
+            };
+        } else if (e.target.id === "f-toggle" && tempUnit === "metric") {
+            tempUnit = "us";
+            e.target.classList.add("active-unit");
+            cToggle.classList.remove("active-unit");
+            if (localWeather.current.temp !== null) {
+                displayWeather(localWeather,tempUnit);
+            };
+        };
+    });
+});
+
+// SEARCHING FOR LOCATION
 const searchForm = document.querySelector("form");
 const searchBar = document.getElementById("location-input");
-let tempUnit = "us"; // moving this definition around to find the right place for it
+
 
 searchForm.addEventListener('submit', async (e) => {
+    console.log("tempUnit on search press: ", tempUnit)
     e.preventDefault();
     await getWeatherData(searchBar.value,tempUnit);
-    displayWeather(localWeather);
+    displayWeather(localWeather,tempUnit);
     searchBar.value = "";
 });
 
@@ -17,7 +44,8 @@ searchForm.addEventListener('submit', async (e) => {
 // let tempUnit = "metric"; // set initial value, other value is "metric"
 
 
-// update the displayed weather 
+// UPDATE DISPLAY
+// variables
 const locationTitle = document.querySelector(".location-title");
 
 const todayCurrentDate = document.getElementById("current-date");
@@ -31,29 +59,39 @@ const tomorrowCondition = document.getElementById("tomorrow-conditions");
 const tomorrowHigh = document.getElementById("tomorrow-high");
 const tomorrowLow = document.getElementById("tomorrow-low");
 
-function displayWeather(localWeather) {
+// function to rebuild DOM
+function displayWeather(localWeather,tempUnit) {
     // location
     locationTitle.textContent = localWeather.current.location;
     updateWeatherIcon(localWeather);
     // today
-    todayCurrentDate.textContent = localWeather.current.date;
-    todayCurrentTemp.textContent = `${localWeather.current.temp}\u00B0F`;             
+    todayCurrentDate.textContent = localWeather.current.date;           
     todayCurrentCondition.textContent = localWeather.current.conditions;
-    todayCurrentHigh.innerHTML = `<b>High:</b> ${localWeather.current.high}\u00B0F`;
-    todayCurrentLow.innerHTML = `<b>Low:</b> ${localWeather.current.low}\u00B0F`;
     // tomorrow
     tomorrowDate.textContent = localWeather.tomorrow.date;
     tomorrowCondition.textContent = localWeather.tomorrow.conditions;
-    tomorrowHigh.innerHTML = `<b>High:</b> ${localWeather.tomorrow.high}\u00B0F`;
-    tomorrowLow.innerHTML = `<b>Low:</b> ${localWeather.tomorrow.low}\u00B0F`;
+    // temp dependent
+    if (tempUnit === "us") {
+        todayCurrentTemp.textContent = `${localWeather.current.temp}\u00B0F`; 
+        todayCurrentHigh.innerHTML = `<b>High:</b> ${localWeather.current.high}\u00B0F`;
+        todayCurrentLow.innerHTML = `<b>Low:</b> ${localWeather.current.low}\u00B0F`;
+        tomorrowHigh.innerHTML = `<b>High:</b> ${localWeather.tomorrow.high}\u00B0F`;
+        tomorrowLow.innerHTML = `<b>Low:</b> ${localWeather.tomorrow.low}\u00B0F`;
+    } else {
+        todayCurrentTemp.textContent = `${localWeather.current.tempC}\u00B0C`; 
+        todayCurrentHigh.innerHTML = `<b>High:</b> ${localWeather.current.highC}\u00B0C`;
+        todayCurrentLow.innerHTML = `<b>Low:</b> ${localWeather.current.lowC}\u00B0C`;
+        tomorrowHigh.innerHTML = `<b>High:</b> ${localWeather.tomorrow.highC}\u00B0C`;
+        tomorrowLow.innerHTML = `<b>Low:</b> ${localWeather.tomorrow.lowC}\u00B0C`;
+    }
     // testing logs - TO REMOVE
     console.log("localWeather: ", localWeather);
     console.log(`It's currently ${localWeather.current.temp} and ${localWeather.current.conditions} with an expected high of ${localWeather.current.high} in ${localWeather.current.location}.`);
     console.log(`Tomorrow, ${localWeather.tomorrow.date}, ${localWeather.current.location} will be ${localWeather.tomorrow.conditions}, with a high of ${localWeather.tomorrow.high} and a low of ${localWeather.tomorrow.low}`)
 };
 
-// update condition icon
-const todayIconContainer = document.getElementById("current-icon-container");
+// UPDATE ICONS
+// const todayIconContainer = document.getElementById("current-icon-container");
 const todayWeatherIcon = document.getElementById("current-forecast-icon");
 const tomorrowWeatherIcon = document.getElementById("tomorrow-forecast-icon");
 
