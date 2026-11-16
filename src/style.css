@@ -21,12 +21,20 @@ button {
 .wrapper {
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 	min-height: 100vh;
 }
 
-/*  ===================================
-	INPUT
-	=================================== */
+/* ===================================
+   HEADER
+   =================================== */
+.header-container {
+	display: flex;
+	max-width: 85%;
+	align-items: center;
+	align-content: center;
+	justify-content: space-between;
+}
 
 /* ===================================
    UNIT TOGGLE
@@ -37,4 +45,18 @@ button {
 
 .active-unit {
 	background-color: red;
+}
+
+/* ===================================
+   SEARCH INPUT
+   =================================== */
+.form-container {
+	min-height: 20%;
+}
+
+/* ===================================
+   WEATHER CARDS
+   =================================== */
+.forecast-weather-card {
+	background: rgba(34, 139, 34, .3);
 }
