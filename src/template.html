@@ -12,7 +12,7 @@
     <div class="wrapper">
         <div class="header-container">
             <h1 class="title">WEATHER?!</h1>
-            <div id="temp-toggle-container">
+            <div id="unit-toggle-container">
                 <span id="f-toggle" class="unit-toggle active-unit">&#176;F</span>
                 <span id="c-toggle" class="unit-toggle inactive-unit">&#176;C</span>
             </div>
@@ -20,10 +20,12 @@
         <div class="form-container">
             <form action="" class="input">
                 <label for="location-input">
-                    <input type="text" id="location-input" name="location-input" required minlength="3">
-                    <span id="location-input-error" class="error" aria-live=""polite"></span>
+                    <input type="text" id="location-input" name="location-input" placeholder="Where To?" required minlength="3">
+                    <span id="location-input-error" class="error" aria-live="polite"></span>
                 </label>
-                <button class="submit-button">Search</button>
+                <button class="submit-button">
+                    <img class="submit-button-svg" src="./img/search.svg" alt="search icon">
+                </button>
             </form>
         </div>
         <div class="weather-container">

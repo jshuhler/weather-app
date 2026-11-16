@@ -43,11 +43,6 @@ searchForm.addEventListener('submit', async (e) => {
     searchBar.value = "";
 });
 
-// f & c toggle - event listener to call a function that's defined in weatherData.js 
-// add class to span that is active to color differently
-// let tempUnit = "metric"; // set initial value, other value is "metric"
-
-
 // UPDATE DISPLAY
 // variables
 const locationTitle = document.querySelector(".location-title");
@@ -64,7 +59,7 @@ const tomorrowHigh = document.getElementById("tomorrow-high");
 const tomorrowLow = document.getElementById("tomorrow-low");
 
 // function to rebuild DOM
-function displayWeather(localWeather,tempUnit) {
+function displayWeather(localWeather,tempUnit) { // think about adding a class to the forecast-weather-card element to make it have a background when this runs so it doesn't appear until a search is performed.
     // location
     locationTitle.textContent = localWeather.current.location;
     updateWeatherIcon(localWeather);

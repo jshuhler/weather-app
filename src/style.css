@@ -19,9 +19,10 @@ button {
 	WRAPPER
 	=================================== */
 .wrapper {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+	display: grid;
+	/* grid-area: 1 / 1 / 5 / 2; */
+	grid-template-rows: 1fr 2fr 7fr 1fr;
+	/* grid-template-rows: 1fr 2fr clamp(7fr, 7fr, 14fr) 1fr; */
 	min-height: 100vh;
 }
 
@@ -30,33 +31,120 @@ button {
    =================================== */
 .header-container {
 	display: flex;
-	max-width: 85%;
 	align-items: center;
 	align-content: center;
-	justify-content: space-between;
+	justify-content: space-around;
+}
+
+#unit-toggle-container,
+.title {
+	user-select: none;
 }
 
 /* ===================================
    UNIT TOGGLE
    =================================== */
+
+
 .unit-toggle {
 	cursor: pointer;
+	user-select: none;
+	padding: 4px;
+	border-radius: 5px;
 }
 
 .active-unit {
-	background-color: red;
+	background-color: green;
+	color: white;
+}
+
+.inactive-unit {
+	background-color: rgb(56, 56, 56);
+	color: gray;
 }
 
 /* ===================================
-   SEARCH INPUT
+   SEARCH
    =================================== */
 .form-container {
-	min-height: 20%;
+	display: flex;
+	justify-content: center;
+}
+
+.input {
+	display: flex;
+	align-items: center;
+}
+
+.submit-button,
+label {
+	user-select: none;
+}
+
+input {
+	border: none;
+	border-radius: 6px;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+	background-color: #f8f8f8;
+	color: #333333;
+	width: 250px;
+	font-size: 1em;
+	padding: 0.5em 1em;
+}
+
+input::placeholder {
+	color: #888888;
+}
+
+input:hover {
+	background-color: #f2f2f2;
+}
+
+input:focus {
+	background-color: #f8f8f8;
+	outline: none;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.submit-button {
+	margin-left: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 37px;
+	width: 37px;
+	border-radius: 8px;
+	background: none;
+	border: none;
+}
+
+.submit-button-svg {
+	stroke: #888888;
+	height: 1.75em;
+	width: 1.75em;
 }
 
 /* ===================================
    WEATHER CARDS
    =================================== */
-.forecast-weather-card {
-	background: rgba(34, 139, 34, .3);
+.weather-container {
+	display: grid;
+	background: lightblue;
+}
+
+.location-title {
+	background: gray;
+}
+
+.forecast-container {
+	background: lightgreen;
+}
+
+/* ===================================
+   FOOTER
+   =================================== */
+.footer-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
