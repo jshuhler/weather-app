@@ -12,6 +12,7 @@ unitToggles.forEach(element => {
             tempUnit = "metric";
             e.target.classList.add("active-unit");
             fToggle.classList.remove("active-unit");
+            fToggle.classList.add("inactive-unit");
             if (localWeather.current.temp !== null) {
                 displayWeather(localWeather,tempUnit);
             };
@@ -19,6 +20,7 @@ unitToggles.forEach(element => {
             tempUnit = "us";
             e.target.classList.add("active-unit");
             cToggle.classList.remove("active-unit");
+            cToggle.classList.add("inactive-unit")
             if (localWeather.current.temp !== null) {
                 displayWeather(localWeather,tempUnit);
             };
