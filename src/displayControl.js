@@ -20,7 +20,7 @@ unitToggles.forEach(element => {
             tempUnit = "us";
             e.target.classList.add("active-unit");
             cToggle.classList.remove("active-unit");
-            cToggle.classList.add("inactive-unit")
+            cToggle.classList.add("inactive-unit");
             if (localWeather.current.temp !== null) {
                 displayWeather(localWeather,tempUnit);
             };
