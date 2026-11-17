@@ -40,14 +40,13 @@ searchForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     await getWeatherData(searchBar.value,tempUnit);
     displayWeather(localWeather,tempUnit);
+    changeBackground(localWeather);
     searchBar.value = "";
     searchBar.blur();
 });
 
 // UPDATE DISPLAY
 // variables
-const wrapper = document.querySelector(".wrapper");
-
 const locationTitle = document.querySelector(".location-title");
 
 const initialLoad = document.querySelectorAll(".initial-load");
@@ -96,6 +95,22 @@ function displayWeather(localWeather,tempUnit) { // think about adding a class t
     console.log("localWeather: ", localWeather);
     console.log(`It's currently ${localWeather.current.temp} and ${localWeather.current.conditions} with an expected high of ${localWeather.current.high} in ${localWeather.current.location}.`);
     console.log(`Tomorrow, ${localWeather.tomorrow.date}, ${localWeather.current.location} will be ${localWeather.tomorrow.conditions}, with a high of ${localWeather.tomorrow.high} and a low of ${localWeather.tomorrow.low}`)
+};
+
+function changeBackground(localWeather) {
+    const wrapper = document.getElementById("wrapper");
+
+    wrapper.classList.value = "";
+    if (localWeather.current.icon === "clear-day" || localWeather.current.icon === "partly-cloudy-day") {
+        console.log("Triggered")
+        wrapper.classList.add("day-clear-background");
+    } else if (localWeather.current.icon === "clear-night" || localWeather.current.icon === "partly-cloudy-night") {
+        wrapper.classList.add("night-clear-background");
+    } else if (localWeather.current.icon === "cloudy" || localWeather.current.icon === "fog" || localWeather.current.icon === "rain" || localWeather.current.icon === "snow") {
+        wrapper.classList.add("stormy-background");
+    } else {
+        wrapper.classList.add("undefined-background");
+    };
 };
 
 // UPDATE ICONS
