@@ -41,6 +41,7 @@ searchForm.addEventListener('submit', async (e) => {
     await getWeatherData(searchBar.value,tempUnit);
     displayWeather(localWeather,tempUnit);
     searchBar.value = "";
+    searchBar.blur();
 });
 
 // UPDATE DISPLAY

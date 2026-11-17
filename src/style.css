@@ -9,6 +9,7 @@
 
 :root {
 	--default-font: 'JetBrains Mono', monospace;
+	--forecast-font-color: #232323;
 }
 
 button {
@@ -21,7 +22,7 @@ button {
 .wrapper {
 	display: grid;
 	/* grid-area: 1 / 1 / 5 / 2; */
-	grid-template-rows: 1fr 2fr 7fr 1fr;
+	grid-template-rows: 1fr 1.25fr 7fr 1fr;
 	/* grid-template-rows: 1fr 2fr clamp(7fr, 7fr, 14fr) 1fr; */
 	min-height: 100vh;
 }
@@ -44,8 +45,6 @@ button {
 /* ===================================
    UNIT TOGGLE
    =================================== */
-
-
 .unit-toggle {
 	cursor: pointer;
 	user-select: none;
@@ -128,16 +127,67 @@ input:focus {
    WEATHER CARDS
    =================================== */
 .weather-container {
-	display: grid;
-	background: lightblue;
+	display: flex;
+	flex-direction: column;
 }
 
 .location-title {
-	background: gray;
+	padding: 40px;
+	text-align: center;
 }
 
 .forecast-container {
-	background: lightgreen;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.forecast-weather-card {
+	box-sizing: content-box;
+	background-color: rgba(255, 255, 255, 0.1);
+	display: grid;
+	grid-template-rows: 1fr 4fr 3fr 2fr 2fr;
+	gap: 10px;
+	margin: 16px;
+	padding: 25px;
+	border-radius: 8px;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+	max-width: 260px;
+	max-height: 300px;
+}
+
+.forecast-date {
+	text-align: center;
+	padding-bottom: 5px;
+}
+
+#current-top-row {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.forecast-top-row {
+	color: var(--forecast-font-color);
+	font-size: xx-large;
+	height: 98px;
+}
+
+.forecast-icon {
+	height: 90px;
+	width: 90px;
+}
+
+.forecast-data {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#tomorrow-top-row {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 /* ===================================
