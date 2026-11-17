@@ -27,12 +27,14 @@ let localWeather = {
 
 // fetching overall weather data from visual crossing
 async function getWeatherData(location) {
-    // const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=us&iconSet=icons1`);
-    const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=us&iconSet=icons1&elements=datetime,temp,tempmax,tempmin,conditions,icon`); // explicitly requesting icon property in return
-
-    const returnedWeatherData = await response.json();
-    parseWeatherData(returnedWeatherData);
-    console.log("returnedWeatherData: ",returnedWeatherData)
+    try {
+        const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=us&iconSet=icons1&elements=datetime,temp,tempmax,tempmin,conditions,icon`); // explicitly requesting icon property in return
+        const returnedWeatherData = await response.json();
+        parseWeatherData(returnedWeatherData);
+        console.log("returnedWeatherData: ",returnedWeatherData)
+    } catch (error) {
+        console.error(error)
+    }
 };
 
 // cleaning up returned weather data and pushing to localWeather object for use
