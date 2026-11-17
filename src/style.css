@@ -22,10 +22,15 @@ button {
 .wrapper {
 	display: grid;
 	/* grid-area: 1 / 1 / 5 / 2; */
-	grid-template-rows: 1fr 1.25fr 7fr 1fr;
+	grid-template-rows: 1fr 1.25fr 7fr .5fr;
 	/* grid-template-rows: 1fr 2fr clamp(7fr, 7fr, 14fr) 1fr; */
 	min-height: 100vh;
 }
+
+/* ===================================
+   BACKGROUNDS
+   =================================== */
+
 
 /* ===================================
    HEADER
@@ -49,17 +54,26 @@ button {
 	cursor: pointer;
 	user-select: none;
 	padding: 4px;
+	display: inline-flex;
 	border-radius: 5px;
+	height: 30px;
+	width: 30px;
+	align-items: center;
+	justify-content: center;
 }
 
 .active-unit {
-	background-color: green;
+	background-color: rgb(70, 189, 70);
+	border: solid 1px rgb(126, 126, 126);
 	color: white;
+	box-shadow: inset 2px 5px 10px rgba(0,0,0,0.5);
+	text-shadow: 0 0 2px #cecece, 0 0 12px #cecece;
 }
 
 .inactive-unit {
-	background-color: rgb(56, 56, 56);
-	color: gray;
+	background-color: rgb(209, 206, 206);
+	box-shadow: 1px 4px 10px rgba(0,0,0,0.4);
+	color: rgb(73, 73, 73);
 }
 
 /* ===================================
@@ -188,6 +202,12 @@ input:focus {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.initial-load {
+	box-shadow: none;
+	height: 0;
+	width: 0;
 }
 
 /* ===================================

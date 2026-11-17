@@ -6,12 +6,12 @@
 - [ ] error handling
 - [ ] C/F switcher
     - [ ] buttons that highlight the current selection
-    - [ ] update `displayWeather()` to change display without rerunning API call
+    - [x] update `displayWeather()` to change display without rerunning API call
 - [ ] background change based on current weather of selection - https://cssgradient.io/
     - Linear, 2 colors
     - Day, Sunny: #FFFFFF to #75D7E6
     - Day, Rainy or Snowy: 
-    - Night, Clear: 
+    - Night, Clear: #03001A to #3D6785
     - Night, Rainy or Snowy: 
     - Undefined: Rainbow
 - [ ] styling

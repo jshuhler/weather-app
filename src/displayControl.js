@@ -46,7 +46,11 @@ searchForm.addEventListener('submit', async (e) => {
 
 // UPDATE DISPLAY
 // variables
+const wrapper = document.querySelector(".wrapper");
+
 const locationTitle = document.querySelector(".location-title");
+
+const initialLoad = document.querySelectorAll(".initial-load");
 
 const todayCurrentDate = document.getElementById("current-date");
 const todayCurrentTemp = document.getElementById("current-temp");
@@ -61,6 +65,10 @@ const tomorrowLow = document.getElementById("tomorrow-low");
 
 // function to rebuild DOM
 function displayWeather(localWeather,tempUnit) { // think about adding a class to the forecast-weather-card element to make it have a background when this runs so it doesn't appear until a search is performed.
+    // removing styling before search results displayed
+    initialLoad.forEach(element => {
+        element.classList.remove("initial-load");
+    })
     // location
     locationTitle.textContent = localWeather.current.location;
     updateWeatherIcon(localWeather);
@@ -73,16 +81,16 @@ function displayWeather(localWeather,tempUnit) { // think about adding a class t
     // temp dependent
     if (tempUnit === "us") {
         todayCurrentTemp.textContent = `${localWeather.current.temp}\u00B0F`; 
-        todayCurrentHigh.innerHTML = `<b>High:</b> ${localWeather.current.high}\u00B0F`;
-        todayCurrentLow.innerHTML = `<b>Low:</b> ${localWeather.current.low}\u00B0F`;
-        tomorrowHigh.innerHTML = `<b>High:</b> ${localWeather.tomorrow.high}\u00B0F`;
-        tomorrowLow.innerHTML = `<b>Low:</b> ${localWeather.tomorrow.low}\u00B0F`;
+        todayCurrentHigh.innerHTML = `<b>High: </b> ${localWeather.current.high}\u00B0F`;
+        todayCurrentLow.innerHTML = `<b>Low: </b> ${localWeather.current.low}\u00B0F`;
+        tomorrowHigh.innerHTML = `<b>High: </b> ${localWeather.tomorrow.high}\u00B0F`;
+        tomorrowLow.innerHTML = `<b>Low: </b> ${localWeather.tomorrow.low}\u00B0F`;
     } else {
         todayCurrentTemp.textContent = `${localWeather.current.tempC}\u00B0C`; 
-        todayCurrentHigh.innerHTML = `<b>High:</b> ${localWeather.current.highC}\u00B0C`;
-        todayCurrentLow.innerHTML = `<b>Low:</b> ${localWeather.current.lowC}\u00B0C`;
-        tomorrowHigh.innerHTML = `<b>High:</b> ${localWeather.tomorrow.highC}\u00B0C`;
-        tomorrowLow.innerHTML = `<b>Low:</b> ${localWeather.tomorrow.lowC}\u00B0C`;
+        todayCurrentHigh.innerHTML = `<b>High: </b> ${localWeather.current.highC}\u00B0C`;
+        todayCurrentLow.innerHTML = `<b>Low: </b> ${localWeather.current.lowC}\u00B0C`;
+        tomorrowHigh.innerHTML = `<b>High: </b> ${localWeather.tomorrow.highC}\u00B0C`;
+        tomorrowLow.innerHTML = `<b>Low: </b> ${localWeather.tomorrow.lowC}\u00B0C`;
     }
     // testing logs - TO REMOVE
     console.log("localWeather: ", localWeather);

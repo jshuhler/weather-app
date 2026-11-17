@@ -9,6 +9,9 @@ My (in progress) solution for the [Weather App](https://www.theodinproject.com/l
 ## skills used and challenges
 - first project using promises, async/await functions, and fetching/using data retrieved from APIs
 
+## how to run
+- `npm`.
+
 ## attributions
 - weather data from [Visual Crossing](https://www.visualcrossing.com/weather-api/)
 - weather icons from [iconixar - Flaticon](https://www.flaticon.com/authors/iconixar)
