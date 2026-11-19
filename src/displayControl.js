@@ -39,7 +39,8 @@ searchForm.addEventListener('submit', async (e) => {
     console.log("tempUnit on search press: ", tempUnit)
     e.preventDefault();
     if (searchBar.value === "") {
-        showError();
+        showError("Provide a location, please.");
+        return
     } 
     await getWeatherData(searchBar.value,tempUnit);
     displayWeather(localWeather,tempUnit);
@@ -48,10 +49,10 @@ searchForm.addEventListener('submit', async (e) => {
     searchBar.blur();
 });
 
-function showError() {
+function showError(message) {
     console.log("the showError call worked at least.")
-    error.textContent = "You must provide a location."
-}
+    error.textContent = `${message}`;
+};
 
 // UPDATE DISPLAY
 // variables

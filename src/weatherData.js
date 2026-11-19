@@ -30,17 +30,21 @@ let localWeather = {
 async function getWeatherData(location) {
     try {
         const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=us&iconSet=icons1&elements=datetime,temp,tempmax,tempmin,conditions,icon`); // explicitly requesting icon property in return
-    } catch (error) {
-        if (!response.status === "200") {
-            showError();
-        }
-    }
         console.log("HTTP Response Ok?: ", response.ok)
         console.log("HTTP Response Code: ",response.status)
-        
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
         const returnedWeatherData = await response.json();
         parseWeatherData(returnedWeatherData);
         console.log("returnedWeatherData: ",returnedWeatherData)
+    } catch (error) {
+        console.error(error.message);
+        showError("Something went wrong, try again in a bit.")
+    }
+        
+
+        
     // } catch (error) {
     //     throw new Error("Try again, please.");
     
