@@ -1,4 +1,5 @@
 import { format, parseISO } from "date-fns"
+import { showError } from "./displayControl.js"
 
 let localWeather = {
     current: {
@@ -29,12 +30,20 @@ let localWeather = {
 async function getWeatherData(location) {
     try {
         const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=us&iconSet=icons1&elements=datetime,temp,tempmax,tempmin,conditions,icon`); // explicitly requesting icon property in return
+    } catch (error) {
+        if (!response.status === "200") {
+            showError();
+        }
+    }
+        console.log("HTTP Response Ok?: ", response.ok)
+        console.log("HTTP Response Code: ",response.status)
+        
         const returnedWeatherData = await response.json();
         parseWeatherData(returnedWeatherData);
         console.log("returnedWeatherData: ",returnedWeatherData)
-    } catch (error) {
-        console.error(error)
-    }
+    // } catch (error) {
+    //     throw new Error("Try again, please.");
+    
 };
 
 // cleaning up returned weather data and pushing to localWeather object for use

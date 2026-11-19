@@ -49,6 +49,7 @@ searchForm.addEventListener('submit', async (e) => {
 });
 
 function showError() {
+    console.log("the showError call worked at least.")
     error.textContent = "You must provide a location."
 }
 
@@ -98,6 +99,7 @@ function displayWeather(localWeather,tempUnit) { // think about adding a class t
         tomorrowHigh.innerHTML = `<b>High:</b> ${localWeather.tomorrow.highC}\u00B0C`;
         tomorrowLow.innerHTML = `<b>Low:</b> ${localWeather.tomorrow.lowC}\u00B0C`;
     }
+    error.textContent = "";
     // testing logs - TO REMOVE
     console.log("localWeather: ", localWeather);
     console.log(`It's currently ${localWeather.current.temp} and ${localWeather.current.conditions} with an expected high of ${localWeather.current.high} in ${localWeather.current.location}.`);
@@ -139,4 +141,5 @@ function updateWeatherIcon(localWeather) {
 
 export {
     displayWeather,
+    showError,
 }
