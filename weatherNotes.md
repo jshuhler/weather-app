@@ -14,3 +14,6 @@
     - Stormy: 
     - Undefined: Rainbow
 - [ ] styling
+
+Next time: 
+    add something to displayWeather that will stop things if it receives a value of "null" or not display the styling so it just shows the search bar and the error message. 
