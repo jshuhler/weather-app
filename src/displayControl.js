@@ -56,6 +56,7 @@ searchForm.addEventListener('submit', async (e) => {
 // call and pass any string to display message whenever
 function showError(message) {
     error.textContent = `${message}`;
+    error.className = "error active";
 };
 
 // UPDATE DISPLAY
@@ -105,6 +106,7 @@ function displayWeather(localWeather,tempUnit) { // think about adding a class t
         tomorrowLow.innerHTML = `<b>Low:</b> ${localWeather.tomorrow.lowC}\u00B0C`;
     }
     error.textContent = "";
+    error.className = "error";
     // testing logs - TO REMOVE
     console.log("localWeather: ", localWeather);
     console.log(`It's currently ${localWeather.current.temp} and ${localWeather.current.conditions} with an expected high of ${localWeather.current.high} in ${localWeather.current.location}.`);

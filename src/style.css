@@ -174,7 +174,13 @@ input:focus {
 }
 
 .error.active {
-	padding: 0.3em;
+	padding: 10px;
+	width: 100%;
+	font-size: 80%;
+	color: white;
+	background-color: #990000;
+	border-radius: 0 0 5px 5px;
+
 }
 
 /* ===================================
