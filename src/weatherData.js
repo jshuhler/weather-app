@@ -23,8 +23,8 @@ let localWeather = {
         conditions: null,
         date: null,
         icon: null,
-    }
-}
+    },
+};
 
 // fetching overall weather data from visual crossing
 async function getWeatherData(location) {

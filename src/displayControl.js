@@ -118,11 +118,22 @@ function changeBackground(localWeather) {
     const wrapper = document.getElementById("wrapper");
 
     wrapper.classList.value = "";
-    if (localWeather.current.icon === "clear-day" || localWeather.current.icon === "partly-cloudy-day") {
+    if (
+        localWeather.current.icon === "clear-day" 
+        || localWeather.current.icon === "partly-cloudy-day"
+    ) {
         wrapper.classList.add("day-clear-background");
-    } else if (localWeather.current.icon === "clear-night" || localWeather.current.icon === "partly-cloudy-night") {
+    } else if (
+        localWeather.current.icon === "clear-night" 
+        || localWeather.current.icon === "partly-cloudy-night"
+    ) {
         wrapper.classList.add("night-clear-background");
-    } else if (localWeather.current.icon === "cloudy" || localWeather.current.icon === "fog" || localWeather.current.icon === "rain" || localWeather.current.icon === "snow") {
+    } else if (
+        localWeather.current.icon === "cloudy" 
+        || localWeather.current.icon === "fog" 
+        || localWeather.current.icon === "rain" 
+        || localWeather.current.icon === "snow"
+    ) {
         wrapper.classList.add("stormy-background");
     } else {
         wrapper.classList.add("undefined-background");
