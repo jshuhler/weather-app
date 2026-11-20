@@ -38,19 +38,20 @@ const error = document.querySelector(".error");
 searchForm.addEventListener('submit', async (e) => {
     console.log("tempUnit on search press: ", tempUnit)
     e.preventDefault();
+    clearError();
     if (searchBar.value === "") {
         showError("Please provide a location.");
         return
     } 
     await getWeatherData(searchBar.value);
-    if (!response.ok) { // <- BROKEN HERE, trying to stop the rest of this function if the response back from the query is an error.
+    if (localWeather.current.temp === null) {
         return
     } else {
         displayWeather(localWeather,tempUnit);
         changeBackground(localWeather);
         searchBar.value = "";
         searchBar.blur();
-    }
+    };
 });
 
 // call and pass any string to display message whenever
@@ -58,6 +59,12 @@ function showError(message) {
     error.textContent = `${message}`;
     error.className = "error active";
 };
+
+// call to clear the displayed error 
+function clearError() {
+    error.textContent = "";
+    error.className = "error";
+}
 
 // UPDATE DISPLAY
 // variables
@@ -77,7 +84,7 @@ const tomorrowHigh = document.getElementById("tomorrow-high");
 const tomorrowLow = document.getElementById("tomorrow-low");
 
 // function to rebuild DOM
-function displayWeather(localWeather,tempUnit) { // think about adding a class to the forecast-weather-card element to make it have a background when this runs so it doesn't appear until a search is performed.
+function displayWeather(localWeather,tempUnit) { 
     // removing styling before search results displayed
     initialLoad.forEach(element => {
         element.classList.remove("initial-load");
@@ -105,8 +112,7 @@ function displayWeather(localWeather,tempUnit) { // think about adding a class t
         tomorrowHigh.innerHTML = `<b>High:</b> ${localWeather.tomorrow.highC}\u00B0C`;
         tomorrowLow.innerHTML = `<b>Low:</b> ${localWeather.tomorrow.lowC}\u00B0C`;
     }
-    error.textContent = "";
-    error.className = "error";
+
     // testing logs - TO REMOVE
     console.log("localWeather: ", localWeather);
     console.log(`It's currently ${localWeather.current.temp} and ${localWeather.current.conditions} with an expected high of ${localWeather.current.high} in ${localWeather.current.location}.`);
@@ -119,7 +125,6 @@ function changeBackground(localWeather) {
 
     wrapper.classList.value = "";
     if (localWeather.current.icon === "clear-day" || localWeather.current.icon === "partly-cloudy-day") {
-        console.log("Triggered")
         wrapper.classList.add("day-clear-background");
     } else if (localWeather.current.icon === "clear-night" || localWeather.current.icon === "partly-cloudy-night") {
         wrapper.classList.add("night-clear-background");

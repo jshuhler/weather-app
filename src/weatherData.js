@@ -45,9 +45,9 @@ async function getWeatherData(location) {
         const returnedWeatherData = await response.json();
         console.log("returnedWeatherData: ",returnedWeatherData)        
         parseWeatherData(returnedWeatherData);
+        console.log("localWeather after parse: ",localWeather)
     } catch (error) {
         console.error(error.message);
-        return // <- if the code execution gets to here, I want it to stop and not return to the function that getWeatherData was called from.
     };
 };
 
