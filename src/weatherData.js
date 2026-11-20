@@ -32,16 +32,22 @@ async function getWeatherData(location) {
         const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=us&iconSet=icons1&elements=datetime,temp,tempmax,tempmin,conditions,icon`); // explicitly requesting icon property in return
         console.log("HTTP Response Ok?: ",response.ok)
         console.log("HTTP Response Code: ",response.status)
-        if (!response.ok) {
-            showError("Sorry, please try again.");
-            throw new Error("Something broke.");
+        if (response.status === "400") {
+            showError("Location not found.");
+            throw new Error("Code 400 - Bad Request");
+        } else if (response.status === "500") {
+            showError("Weather?! is currently unavailble.");
+            throw new Error("Code 500 - Server Error");
+        } else if (response.status !== "200") {
+            showError("Please try again later.");
+            throw new Error ("Code 401, 404, or 429 - something broke.")
         }
         const returnedWeatherData = await response.json();
         console.log("returnedWeatherData: ",returnedWeatherData)        
         parseWeatherData(returnedWeatherData);
     } catch (error) {
         console.error(error.message);
-        // showError("Something went wrong, try again in a bit.")
+        return // <- if the code execution gets to here, I want it to stop and not return to the function that getWeatherData was called from.
     };
 };
 

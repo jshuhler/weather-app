@@ -42,15 +42,19 @@ searchForm.addEventListener('submit', async (e) => {
         showError("Please provide a location.");
         return
     } 
-    await getWeatherData(searchBar.value,tempUnit);
-    displayWeather(localWeather,tempUnit);
-    changeBackground(localWeather);
-    searchBar.value = "";
-    searchBar.blur();
+    await getWeatherData(searchBar.value);
+    if (!response.ok) { // <- BROKEN HERE, trying to stop the rest of this function if the response back from the query is an error.
+        return
+    } else {
+        displayWeather(localWeather,tempUnit);
+        changeBackground(localWeather);
+        searchBar.value = "";
+        searchBar.blur();
+    }
 });
 
+// call and pass any string to display message whenever
 function showError(message) {
-    console.log("the showError call worked at least.")
     error.textContent = `${message}`;
 };
 
@@ -132,12 +136,17 @@ const tomorrowWeatherIcon = document.getElementById("tomorrow-forecast-icon");
 function updateWeatherIcon(localWeather) {
     let todayIconId = localWeather.current.icon;
     let tomorrowIconId = localWeather.tomorrow.icon;
-    import(`./img/weather-icons/${todayIconId}.png`).then((module) => {
-        todayWeatherIcon.src = module.default;
-    });
-    import(`./img/weather-icons/${tomorrowIconId}.png`).then((module) => {
-        tomorrowWeatherIcon.src = module.default;
-    });
+    if (todayIconId === null || tomorrowIconId === null) {
+        console.log("Tried to look up null.png");
+        return
+    } else {
+        import(`./img/weather-icons/${todayIconId}.png`).then((module) => {
+            todayWeatherIcon.src = module.default;
+        });
+        import(`./img/weather-icons/${tomorrowIconId}.png`).then((module) => {
+            tomorrowWeatherIcon.src = module.default;
+        });
+    };
 };
 
 export {

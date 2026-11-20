@@ -30,6 +30,11 @@ button {
 /* ===================================
    BACKGROUNDS
    =================================== */
+.default-background {
+	background: #52b6de;
+	background: linear-gradient(128deg, rgba(82, 182, 222, 0.5) 0%, rgba(46, 15, 97, 0.7) 100%);
+}
+
 .day-clear-background {
 	background: #FFFFFF;
 	background: linear-gradient(128deg, rgba(255, 255, 255, 1) 0%, rgba(117, 190, 230, 1) 100%);
@@ -37,7 +42,7 @@ button {
 
 .stormy-background {
 	background: #c4c4c4;
-	background: linear-gradient(126deg, rgba(196, 196, 196, 1) 0%, rgba(77, 77, 77, 1) 100%);}
+	background: linear-gradient(128deg, rgba(196, 196, 196, 1) 0%, rgba(77, 77, 77, 1) 100%);}
 
 .night-clear-background {
 	background: #3D6785;
@@ -46,7 +51,7 @@ button {
 
 .undefined-background {
 	background: #833AB4;
-	background: linear-gradient(126deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+	background: linear-gradient(128deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
 }
 
 /* ===================================
@@ -109,6 +114,11 @@ button {
 .submit-button,
 label {
 	user-select: none;
+}
+
+label {
+	display: flex;
+	flex-direction: column;
 }
 
 input {
@@ -235,6 +245,7 @@ input:focus {
 }
 
 .initial-load {
+	background-color: transparent;
 	box-shadow: none;
 	height: 0;
 	width: 0;
