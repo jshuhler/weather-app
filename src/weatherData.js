@@ -43,9 +43,7 @@ async function getWeatherData(location) {
             throw new Error ("Something else broke.")
         }
         const returnedWeatherData = await response.json();
-        console.log("returnedWeatherData: ",returnedWeatherData)        
         parseWeatherData(returnedWeatherData);
-        console.log("localWeather after parse: ",localWeather)
     } catch (error) {
         console.error(error.message);
     };
@@ -79,7 +77,7 @@ function parseWeatherData(returnedWeatherData) {
     localWeather.tomorrow.conditions = returnedWeatherData.days[1].conditions;
     localWeather.tomorrow.icon = returnedWeatherData.days[1].icon;
     localWeather.tomorrow.date = format(parseISO(returnedWeatherData.days[1].datetime), 'PPPP');
-}
+};
 
 function convertToC(temp) {
     let tempC = (temp - 32)*(5/9);

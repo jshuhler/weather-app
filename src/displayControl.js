@@ -36,7 +36,6 @@ const searchBar = document.getElementById("location-input");
 const error = document.querySelector(".error");
 
 searchForm.addEventListener('submit', async (e) => {
-    console.log("tempUnit on search press: ", tempUnit)
     e.preventDefault();
     clearError();
     if (searchBar.value === "") {
@@ -64,7 +63,7 @@ function showError(message) {
 function clearError() {
     error.textContent = "";
     error.className = "error";
-}
+};
 
 // UPDATE DISPLAY
 // variables
@@ -111,12 +110,7 @@ function displayWeather(localWeather,tempUnit) {
         todayCurrentLow.innerHTML = `<b>Low:</b> ${localWeather.current.lowC}\u00B0C`;
         tomorrowHigh.innerHTML = `<b>High:</b> ${localWeather.tomorrow.highC}\u00B0C`;
         tomorrowLow.innerHTML = `<b>Low:</b> ${localWeather.tomorrow.lowC}\u00B0C`;
-    }
-
-    // testing logs - TO REMOVE
-    console.log("localWeather: ", localWeather);
-    console.log(`It's currently ${localWeather.current.temp} and ${localWeather.current.conditions} with an expected high of ${localWeather.current.high} in ${localWeather.current.location}.`);
-    console.log(`Tomorrow, ${localWeather.tomorrow.date}, ${localWeather.current.location} will be ${localWeather.tomorrow.conditions}, with a high of ${localWeather.tomorrow.high} and a low of ${localWeather.tomorrow.low}`)
+    };
 };
 
 // changing background based on localWeather.current.icon
@@ -144,7 +138,6 @@ function updateWeatherIcon(localWeather) {
     let todayIconId = localWeather.current.icon;
     let tomorrowIconId = localWeather.tomorrow.icon;
     if (todayIconId === null || tomorrowIconId === null) {
-        console.log("Tried to look up null.png");
         return
     } else {
         import(`./img/weather-icons/${todayIconId}.png`).then((module) => {
@@ -159,4 +152,4 @@ function updateWeatherIcon(localWeather) {
 export {
     displayWeather,
     showError,
-}
+};
