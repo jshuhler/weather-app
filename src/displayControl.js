@@ -43,14 +43,14 @@ searchForm.addEventListener('submit', async (e) => {
         return
     } 
     await getWeatherData(searchBar.value);
-    if (!response.ok) { // <- BROKEN HERE, trying to stop the rest of this function if the response back from the query is an error.
-        return
-    } else {
+    // if (!response.ok) { // <- BROKEN HERE, trying to stop the rest of this function if the response back from the query is an error.
+    //     return
+    // } else {
         displayWeather(localWeather,tempUnit);
         changeBackground(localWeather);
         searchBar.value = "";
         searchBar.blur();
-    }
+    // }
 });
 
 // call and pass any string to display message whenever
